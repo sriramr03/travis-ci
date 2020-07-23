@@ -5,8 +5,19 @@ language: java
 jdk:
   - openjdk11
 
+services:
+  - docker
+
 before_script:
   - chmod a+x gradlew
 
+before_install:
+  - ./gradlew clean
+  - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_USERNAME" --password-stdin
+  - docker pull openjdk:11-jdk-alpine
+
 script:
   - ./gradlew build
+
+# after_success:
+#  - ./gradlew clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
