@@ -15,7 +15,7 @@ before_install:
   - ./gradlew clean
   - docker logout
   - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
-  - docker pull openjdk:11-jdk-alpine
+  - docker pull openjdk11:alpine-slim
 
 script:
   - ./gradlew build
