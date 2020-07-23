@@ -1,0 +1,12 @@
+sudo: false
+
+language: java
+
+jdk:
+  - openjdk11
+
+before_script:
+  - chmod a+x gradlew
+
+script:
+  - ./gradlew build
